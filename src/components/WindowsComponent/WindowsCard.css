@@ -1,0 +1,11 @@
+.windows-card-size {
+    width: 18rem;
+    height: fit-content;
+}
+
+.img-size {
+    width: 15rem;
+    height: 15rem;
+}
+
+.ajs-message.ajs-custom { color: #0a0ae2;  background-color: #151616;  border-color: #fbfbfb; }

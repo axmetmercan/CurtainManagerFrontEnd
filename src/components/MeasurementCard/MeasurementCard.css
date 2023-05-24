@@ -1,0 +1,12 @@
+.measurement-card { 
+    width: fit-content;
+    min-height: fit-content;
+}
+
+.measurement-card-footer {
+    height: fit-content;
+}
+
+.measurement-price{
+    width: fit-content;
+}

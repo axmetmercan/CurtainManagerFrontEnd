@@ -1,0 +1,14 @@
+.closeButton { 
+    cursor: pointer;
+}
+
+.picture-area {
+    width: 250px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.details-area {
+    height: 400px;
+    overflow-y: scroll;
+}
