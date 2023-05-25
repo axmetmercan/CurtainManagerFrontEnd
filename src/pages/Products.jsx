@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ProductCard from '../components/ProductCard/ProductCard'
+import AuthContext from '../context/AuthContext'
+
 
 const Products = () => {
 
@@ -35,6 +37,61 @@ const Products = () => {
             img: "images/profile-pic.jpg"
         },
     ]
+    let {authTokens, logoutUser} = useContext(AuthContext)
+    
+    const [productList, setProducts] = useState({})
+
+    useEffect(()=>{
+        getProducts()
+        console.log("calisti")
+
+    }, [])
+
+    // let getProducts = async ()=>{
+
+    //     let response = await fetch('http://127.0.0.1:8000/product/products/',{
+    //         method:'GET',
+    //         headers:{
+    //             'Content-Type':'application/json',
+    //             'Authorization':'Bearer '+ String(authTokens.access)
+    //         }
+    //     })
+    //     let data = await response.json()
+        
+    //     if (response.status === 200){
+    //         console.log(response.status)
+    //         return data;
+
+    //     }else if (response.statusText === 'Unauthorized'){
+    //         //logoutUser()
+    //         console.log("Ürünler Getirilemedi response 200 dönmedi")
+    //     }
+    // }
+    let getProducts =  ()=>{
+
+        let response =  1
+        fetch('http://127.0.0.1:8000/product/products/',{
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer '+ String(authTokens.access)
+            }
+        }).then((response) => response.json())
+        .then((data) => {
+            setProducts(data)
+            console.log(data)
+        })
+        // let data =  response.json()
+
+        // if (response.status === 200){
+        //     console.log(response.status)
+        //     return data;
+
+        // }else if (response.statusText === 'Unauthorized'){
+        //     //logoutUser()
+        //     console.log("Ürünler Getirilemedi response 200 dönmedi")
+        // }
+    }
 
 
     return (

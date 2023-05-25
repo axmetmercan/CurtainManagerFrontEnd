@@ -21,12 +21,12 @@ export default function SideBar(props) {
         </Link>
         <Link className="sidebar--links" to={"/products"}>
           <li>
-            <i class="ri-store-line"></i>Products
+            <i className="ri-store-line"></i>Products
           </li>
         </Link>
         <Link className="sidebar--links" to={"/dealers"}>
           <li>
-            <i class="ri-team-line"></i>Dealers
+            <i className="ri-team-line"></i>Dealers
           </li>
         </Link>
         <Link className="sidebar--links" to={"/brands"}>

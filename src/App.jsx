@@ -17,7 +17,8 @@ import Customers from "./pages/Customers";
 import CustomerDetails from "./pages/CustomerDetails";
 import Measurement from "./pages/Measurement";
 import OrderManagement from "./pages/OrderManagement";
-
+import PrivateRoute from "./utils/PrivateRoute";
+import {AuthContextProvider} from "./context/AuthContext";
 function App() {
   const [sidebar, setSidebar] = useState(false);
 
@@ -34,9 +35,28 @@ function App() {
         </div>
 
         <div className={sidebar ? "col-10 ps-0 ms-0 " : "col-12"}>
-          <NavigationBar2 openSidebar={toggleSidebar} />
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
+          <AuthContextProvider>
+
+            <NavigationBar2 openSidebar={toggleSidebar} />
+            <PrivateRoute  path="/" element={<Home></Home>}/>
+            <PrivateRoute  path="/about" element={<About></About>}/>
+            <PrivateRoute  path="/register" element={<Register></Register>}/>
+            <PrivateRoute  path="/products" element={<Products></Products>}/>
+            <PrivateRoute  path="/dealers" element={<Dealers></Dealers>}/>
+            <PrivateRoute  path="/brands" element={<Brands></Brands>}/>
+            <PrivateRoute  path="/customers" element={<Customers></Customers>}/>
+            <PrivateRoute  path="/orders" element={<OrderManagement />}/>
+            <PrivateRoute  path="/customers/:id"
+                element={<CustomerDetails></CustomerDetails>}/>
+            <PrivateRoute  path="/measurements/:id" element={<Measurement />}/>
+            {/* <PrivateRoute  path="/*" element={<NotFound></NotFound>}/> */}
+
+          </AuthContextProvider>
+        
+
+        
+          {/* <Routes>
+            <Route path="/" element={<Home/>}></Route>
             <Route path="/about" element={<About></About>}></Route>
             <Route path="/register" element={<Register></Register>}></Route>
             <Route path="/products" element={<Products></Products>}></Route>
@@ -51,7 +71,7 @@ function App() {
             <Route path="/measurements/:id" element={<Measurement />}></Route>
 
             <Route path="/*" element={<NotFound></NotFound>}></Route>
-          </Routes>
+          </Routes> */}
           <Footer />
         </div>
       </div>

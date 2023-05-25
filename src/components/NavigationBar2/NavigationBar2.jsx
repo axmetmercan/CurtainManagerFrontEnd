@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./NavigationBar2.css"
 import {
   Collapse,
@@ -14,6 +14,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 export default class NavigationBar2 extends React.Component {
   constructor(props) {

@@ -1,12 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import NavigationBar from "../components/NavigationBar/NavigationBar"
 import Footer from "../components/Footer/Footer"
 import TextCard from "../components/TextCard/TextCard"
 import "../style.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LoginCard from "../components/LoginCard/LoginCard"
-
-
+import AuthContext from '../context/AuthContext'
 
 export default function Home() {
   return (

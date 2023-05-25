@@ -12,6 +12,7 @@
     "alertifyjs": "^1.13.1",
     "bootstrap": "^5.2.3",
     "i": "^0.3.7",
+    "jwt-decode": "^3.1.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "npm": "^9.6.1",
