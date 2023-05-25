@@ -7,7 +7,7 @@ export default function LoginCard(props) {
   return (
     <div className='d-flex flex-column justify-content-center align-items-center border rounded-4 shadow' style={{width: props.width}}>
     
-    <img className='rounded-circle' alt='profile-image' src='../images/profile-pic.jpg' style={{width: "150px", height: "150px"}}/>
+    <img className='rounded-circle' alt='profile-image' src='/static/images/profile-pic.jpg' style={{width: "150px", height: "150px"}}/>
       
       <p>hello {user  ? user.user_id: "Login Pls"}</p>
       <form onSubmit={loginUser} className='m-5  p-3 d-flex flex-column ' style={{width:"100%"}}>

@@ -39,59 +39,36 @@ const Products = () => {
     ]
     let {authTokens, logoutUser} = useContext(AuthContext)
     
-    const [productList, setProducts] = useState({})
+    const [productList, setProducts] = useState([])
 
     useEffect(()=>{
-        getProducts()
-        console.log("calisti")
+  
+        getProducts();
+
 
     }, [])
+    console.log(productList);
 
-    // let getProducts = async ()=>{
+    let getProducts = async ()=>{
 
-    //     let response = await fetch('http://127.0.0.1:8000/product/products/',{
-    //         method:'GET',
-    //         headers:{
-    //             'Content-Type':'application/json',
-    //             'Authorization':'Bearer '+ String(authTokens.access)
-    //         }
-    //     })
-    //     let data = await response.json()
-        
-    //     if (response.status === 200){
-    //         console.log(response.status)
-    //         return data;
-
-    //     }else if (response.statusText === 'Unauthorized'){
-    //         //logoutUser()
-    //         console.log("Ürünler Getirilemedi response 200 dönmedi")
-    //     }
-    // }
-    let getProducts =  ()=>{
-
-        let response =  1
-        fetch('http://127.0.0.1:8000/product/products/',{
+        let response = await fetch('http://127.0.0.1:8000/product/products/',{
             method:'GET',
             headers:{
                 'Content-Type':'application/json',
                 'Authorization':'Bearer '+ String(authTokens.access)
             }
-        }).then((response) => response.json())
-        .then((data) => {
-            setProducts(data)
-            console.log(data)
         })
-        // let data =  response.json()
+        let data = await response.json()
+        
+        if (response.status === 200){
+            setProducts(data.results)
 
-        // if (response.status === 200){
-        //     console.log(response.status)
-        //     return data;
-
-        // }else if (response.statusText === 'Unauthorized'){
-        //     //logoutUser()
-        //     console.log("Ürünler Getirilemedi response 200 dönmedi")
-        // }
+        }else if (response.statusText === 'Unauthorized'){
+            //logoutUser()
+            console.log("Ürünler Getirilemedi response 200 dönmedi")
+        }
     }
+    
 
 
     return (
@@ -109,6 +86,11 @@ const Products = () => {
 
                 ))}
 
+                {productList.map( (product) => {
+                   return <li>product</li>
+                })}
+
+            
             </div>
 
 

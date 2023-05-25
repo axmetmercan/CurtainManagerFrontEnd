@@ -5,12 +5,14 @@ import AuthContext from '../context/AuthContext';
 
 function PrivateRoute({children, ...rest}) {
     const {user} = useContext(AuthContext)
-
-    return (
-      <Routes>
-        <Route {...rest}  >{children}</Route>
-      </Routes>
-  )
+    if (!user) {
+      return <Navigate to ="/" replace/>}
+    return children
+  //   return (
+  //     <Routes>
+  //       <Route {...rest}  >{children}</Route>
+  //     </Routes>
+  // )
 }
 // element = {!authenticated ? <Navigate to="/"></Navigate> : element}
 export default PrivateRoute

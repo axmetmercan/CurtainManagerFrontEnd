@@ -36,20 +36,29 @@ function App() {
 
         <div className={sidebar ? "col-10 ps-0 ms-0 " : "col-12"}>
           <AuthContextProvider>
-
             <NavigationBar2 openSidebar={toggleSidebar} />
-            <PrivateRoute  path="/" element={<Home></Home>}/>
-            <PrivateRoute  path="/about" element={<About></About>}/>
-            <PrivateRoute  path="/register" element={<Register></Register>}/>
-            <PrivateRoute  path="/products" element={<Products></Products>}/>
-            <PrivateRoute  path="/dealers" element={<Dealers></Dealers>}/>
-            <PrivateRoute  path="/brands" element={<Brands></Brands>}/>
-            <PrivateRoute  path="/customers" element={<Customers></Customers>}/>
-            <PrivateRoute  path="/orders" element={<OrderManagement />}/>
-            <PrivateRoute  path="/customers/:id"
-                element={<CustomerDetails></CustomerDetails>}/>
-            <PrivateRoute  path="/measurements/:id" element={<Measurement />}/>
-            {/* <PrivateRoute  path="/*" element={<NotFound></NotFound>}/> */}
+
+            <Routes>
+              // Buna dokunma
+              <Route  path="/" element={<Home/>}/>
+              // Bu public kalıcak.
+              
+              <Route  path="/about" element={<PrivateRoute><About/></PrivateRoute> }/>
+              <Route  path="/register" element={<PrivateRoute><Register/></PrivateRoute>}/>
+              <Route  path="/products" element={ <PrivateRoute> <Products/></PrivateRoute>}/>
+              <Route  path="/dealers" element={ <PrivateRoute><Dealers/></PrivateRoute> }/>
+              <Route  path="/brands" element={ <PrivateRoute><Brands/></PrivateRoute> }/>
+              <Route  path="/customers" element={ <PrivateRoute><Customers/></PrivateRoute> }/>
+              <Route  path="/orders" element={<PrivateRoute><OrderManagement /></PrivateRoute> }/>
+              <Route  path="/customers/:id"
+                  element={ <PrivateRoute><CustomerDetails/></PrivateRoute> }/>
+              <Route  path="/measurements/:id" element={<PrivateRoute><Measurement /></PrivateRoute>}/>
+              {/* <PrivateRoute  path="/*" element={<NotFound></NotFound>}/> */}
+
+
+
+            </Routes>
+           
 
           </AuthContextProvider>
         

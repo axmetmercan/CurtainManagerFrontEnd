@@ -21,14 +21,15 @@ export const AuthContextProvider = ({children}) => {
     });
     let localUser =localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null
 
-    let [user, setUser] = useState(()=>{
+    let [user, setUser] = useState(localUser)
+    //     ()=>{
 
-        if (localUser){
-            return localUser
-        }else {
-            return null
-        }
-    });
+    //     if (localUser){
+    //         return localUser
+    //     }else {
+    //         return null
+    //     }
+    // });
     let [loading, setLoading] = useState(true);
 
     let navigate = useNavigate();
