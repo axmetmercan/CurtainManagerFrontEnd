@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom'; // version 5.2.0
 
 const AuthContext = createContext();
-0
+
 
 export default AuthContext;
 
@@ -97,11 +97,7 @@ export const AuthContextProvider = ({children}) => {
         }
 
         const refreshTime = 1000*60*4;
-        // setInterval(()=>{
-        //     if (authTokens){
-        //         updateToken();
-        //     }
-        // }, 4000)
+  
         setTimeout(()=>{
             if (authTokens){
                 updateToken();
@@ -117,9 +113,7 @@ export const AuthContextProvider = ({children}) => {
         loginUser:loginUser, 
         logoutUser:logoutUser,
         authTokens:authTokens, 
-        name : "Mehmet",
         user: user,
-
     }
 
     return (

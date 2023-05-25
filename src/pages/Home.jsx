@@ -8,6 +8,8 @@ import LoginCard from "../components/LoginCard/LoginCard"
 import AuthContext from '../context/AuthContext'
 
 export default function Home() {
+
+  let {user} = useContext(AuthContext);
   return (
     <div>
       <div
@@ -20,7 +22,8 @@ export default function Home() {
         >
           <TextCard width={"30rem"} />
 
-          <LoginCard width={"30rem"} />
+          {user ? null : <LoginCard width={"30rem"} /> }
+          
         </div>
       </div>
     </div>

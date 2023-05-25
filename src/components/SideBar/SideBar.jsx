@@ -30,10 +30,13 @@ export default function SideBar(props) {
           </li>
         </Link>
         <Link className="sidebar--links" to={"/brands"}>
-          <li>Brands</li>
+          <li>
+          <i class="ri-price-tag-3-line"></i>
+            Brands</li>
         </Link>
         <Link className="sidebar--links" to={"/customers"}>
-          <li>Customers</li>
+          <li>
+          <i class="ri-user-line"></i>Customers</li>
         </Link>
       </div>
     </div>
