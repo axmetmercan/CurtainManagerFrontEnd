@@ -41,10 +41,10 @@ function App() {
             <Routes>
               // Buna dokunma
               <Route  path="/" element={<Home/>}/>
+              <Route  path="/about" element={<About/> }/>
+              <Route  path="/register" element={<Register/>}/>
               // Bu public kalıcak.
-              
-              <Route  path="/about" element={<PrivateRoute><About/></PrivateRoute> }/>
-              <Route  path="/register" element={<PrivateRoute><Register/></PrivateRoute>}/>
+
               <Route  path="/products" element={ <PrivateRoute> <Products/></PrivateRoute>}/>
               <Route  path="/dealers" element={ <PrivateRoute><Dealers/></PrivateRoute> }/>
               <Route  path="/brands" element={ <PrivateRoute><Brands/></PrivateRoute> }/>

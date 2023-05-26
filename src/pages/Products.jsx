@@ -42,10 +42,7 @@ const Products = () => {
     const [productList, setProducts] = useState([])
 
     useEffect(()=>{
-  
         getProducts();
-
-
     }, [])
     console.log(productList);
 
@@ -74,21 +71,17 @@ const Products = () => {
     return (
         <div className='container container-fluid'>
             <div className="d-flex flex-row justify-content-center flex-wrap pt-5 pb-5">
-                {products.map( (product, index) => (
+                {productList.map( (product) => (
 
-                    <ProductCard key={index}
+                    <ProductCard key={product.id}
                         width={"19rem"}
-                        title={product.title}
-                        subtitle={product.subtitle}
-                        img={product.img}
+                        title={product.brand}
+                        subtitle={product.code}
+                        img={product.img1}
                     ></ProductCard>
 
 
-                ))}
-
-                {productList.map( (product) => {
-                   return <li>product</li>
-                })}
+                 ))}
 
             
             </div>

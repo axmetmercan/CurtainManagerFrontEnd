@@ -56,17 +56,18 @@ export default class NavigationBar2 extends React.Component {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <Link to="/" className="nav-link text-dark">
-                  <img className="icons" src="../images/msg-icon.png" />
+                  <p><i className="ri-message-2-fill"></i></p>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link to="/" className="nav-link text-dark">
-                  <img className="icons" src="../images/bell-icon.png" />
+                  <p><i className="ri-notification-2-fill"></i></p>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link to="/" className="nav-link text-dark">
-                  <img className="icons" src="../images/profile-icon.png" />
+                <p><i className="ri-user-2-fill"></i></p>
+
                 </Link>
               </NavItem>
             </Nav>

@@ -19,10 +19,10 @@ export default function TableRow(props) {
   return (
     <tr>
       <th scope="row">{props.item.id}</th>
-      <td>{props.item.bayi_adi}</td>
-      <td>{props.item.bayi_yetkili_adi}</td>
-      <td>{props.item.iletisim_no}</td>
-      <td>{props.item.bayi_address} </td>
+      <td>{props.item.dealer.name}</td>
+      <td>{props.item.dealer.owner_name}</td>
+      <td>{props.item.dealer.phone_number}</td>
+      <td>{props.item.dealer.address} </td>
       <td>
         <Button color="primary" onClick={toggleModal}>
           Detaylar

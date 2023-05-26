@@ -31,12 +31,12 @@ export default function SideBar(props) {
         </Link>
         <Link className="sidebar--links" to={"/brands"}>
           <li>
-          <i class="ri-price-tag-3-line"></i>
+          <i className="ri-price-tag-3-line"></i>
             Brands</li>
         </Link>
         <Link className="sidebar--links" to={"/customers"}>
           <li>
-          <i class="ri-user-line"></i>Customers</li>
+          <i className="ri-user-line"></i>Customers</li>
         </Link>
       </div>
     </div>
