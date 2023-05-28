@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
 export default function TableRow(props) {
   const [modal, setModal] = useState(false);
+  const [measuremets ,setMeasurements] = useState([])
 
   const toggleModal = () => {
     setModal(true);
@@ -13,17 +14,21 @@ export default function TableRow(props) {
     setModal(false);
   };
 
+  useEffect(()=>{
+    setMeasurements(props.item);
+  },)
+
   return (
     <tr>
       <th scope="row">{props.item.id}</th>
-      <td>{props.item.olcu_ismi}</td>
-      <td>{props.item.telefon}</td>
-      <td>{props.item.kayit_tarihi}</td>
-      <td>{props.item.olcu_durumu}</td>
+      <td>{props.item.name}</td>
+      {/* <td>{}</td> */}
+      <td>{props.item.created_date}</td>
+      {/* <td>{props.item.olcu_durumu}</td> */}
       <td>
         <Link
           className="btn btn-primary"
-          to={`/measurements/${props.item.id}/`}
+          to={`/measurements/${props.item.id}`}
         >
           Detaylar
         </Link>

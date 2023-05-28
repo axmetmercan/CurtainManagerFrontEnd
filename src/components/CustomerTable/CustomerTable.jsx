@@ -1,8 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import TableRow from "./TableRow";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table, Button } from "reactstrap";
+import AuthContext from "../../context/AuthContext"
+
 
 export default function CustomerTable
 () {
@@ -37,7 +39,42 @@ export default function CustomerTable
     }
   ];
 
-  const TableRowItem = tableItems.map((item) => {
+
+  const {user, authTokens} = useContext(AuthContext)
+  const [customers, setCustomers] = useState([])
+  const [isLoading, setLoading] = useState(true)
+
+
+  useEffect(()=>{
+
+    getCustomers();
+    setLoading(false)
+
+  }, [])
+
+
+  const getCustomers = async () =>{
+    let response = await fetch('http://127.0.0.1:8000/customer/customers/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + String(authTokens.access)
+      }
+    })
+    let data = await response.json()
+
+    if (response.status === 200) {
+      setCustomers(data.results)
+
+    } else if (response.statusText === 'Unauthorized') {
+
+      console.log("Ürünler Getirilemedi response 200 dönmedi")
+    }
+
+  }
+
+
+  const TableRowItem = customers.map((item) => {
     return <TableRow key={item.id} item={item} />;
   });
 
@@ -49,8 +86,8 @@ export default function CustomerTable
             <th>ID</th>
             <th>İsim</th>
             <th>Soyisim</th>
-            <th>Kayıt Tarihi</th>
-            <th>Ölçü Durumu</th>
+            <th>Telefon Numarası</th>
+            <th>Email</th>
             <th>Müşteri Detayları</th>
           </tr>
         </thead>

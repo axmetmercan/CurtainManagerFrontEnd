@@ -37,6 +37,7 @@ function App() {
         <div className={sidebar ? "col-10 ps-0 ms-0 " : "col-12"}>
           <AuthContextProvider>
             <NavigationBar2 openSidebar={toggleSidebar} />
+            <div style={{}}>
 
             <Routes>
               // Buna dokunma
@@ -53,35 +54,17 @@ function App() {
               <Route  path="/customers/:id"
                   element={ <PrivateRoute><CustomerDetails/></PrivateRoute> }/>
               <Route  path="/measurements/:id" element={<PrivateRoute><Measurement /></PrivateRoute>}/>
-              {/* <PrivateRoute  path="/*" element={<NotFound></NotFound>}/> */}
+              <Route  path="/*" element={<NotFound></NotFound>}/>
 
 
 
             </Routes>
-           
+            </div>
+
 
           </AuthContextProvider>
-        
-
-        
-          {/* <Routes>
-            <Route path="/" element={<Home/>}></Route>
-            <Route path="/about" element={<About></About>}></Route>
-            <Route path="/register" element={<Register></Register>}></Route>
-            <Route path="/products" element={<Products></Products>}></Route>
-            <Route path="/dealers" element={<Dealers></Dealers>}></Route>
-            <Route path="/brands" element={<Brands></Brands>}></Route>
-            <Route path="/customers" element={<Customers></Customers>}></Route>
-            <Route path="/orders" element={<OrderManagement />}></Route>
-            <Route
-              path="/customers/:id"
-              element={<CustomerDetails></CustomerDetails>}
-            ></Route>
-            <Route path="/measurements/:id" element={<Measurement />}></Route>
-
-            <Route path="/*" element={<NotFound></NotFound>}></Route>
-          </Routes> */}
           <Footer />
+
         </div>
       </div>
     </div>

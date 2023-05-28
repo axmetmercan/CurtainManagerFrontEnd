@@ -9,10 +9,6 @@ const TableRowDetailsModal = ({ openModal, closeModal }, props) => {
 
   const [modal, setModal] = useState(openModal);
 
-  const addItemCard = () => {
-    console.log("sepete eklendi");
-    alertify.success("Seçtiğiniz Ürün Sepete Eklendi");
-  };
 
   return (
     <div>

@@ -17,10 +17,10 @@ export default function TableRow(props) {
   return (
     <tr>
       <th scope="row">{props.item.id}</th>
-      <td>{props.item.isim}</td>
-      <td>{props.item.soyisim}</td>
-      <td>{props.item.kayit_tarihi}</td>
-      <td>{props.item.olcu_durumu}</td>
+      <td>{props.item.name}</td>
+      <td>{props.item.surname}</td>
+      <td>{props.item.phone}</td>
+      <td>{props.item.email}</td>
       <td>
         <Link className="btn btn-primary" to={`/customers/${props.item.id}`}>
           Detaylar

@@ -69,15 +69,16 @@ const Products = () => {
 
 
     return (
-        <div className='container container-fluid'>
+        <div className='container container-fluid' style={{"zIndex":"1"}}>
             <div className="d-flex flex-row justify-content-center flex-wrap pt-5 pb-5">
                 {productList.map( (product) => (
 
                     <ProductCard key={product.id}
                         width={"19rem"}
-                        title={product.brand}
-                        subtitle={product.code}
-                        img={product.img1}
+                        title={product.code}
+                        subtitle={product.brand}
+                        img={product.img1.pic_url}
+                        product = {product}
                     ></ProductCard>
 
 
@@ -87,13 +88,6 @@ const Products = () => {
             </div>
 
 
-
-            {/* <ProductCard
-                width={"17rem"}
-                title={"Example Product"}
-                subtitle={"Deneme Subtitle"}
-                img={"images/profile-pic.jpg"}
-            ></ProductCard> */}
 
 
         </div>

@@ -15,6 +15,8 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import Lottie from "lottie-react";
+import animationData from "../../assets/84673-background-animation.json";
 
 export default class NavigationBar2 extends React.Component {
   constructor(props) {
@@ -73,6 +75,10 @@ export default class NavigationBar2 extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
+        <Lottie animationData={animationData}
+                style={{ "position": "absolute", "top": "-50px", "left": "-300px", "right": "0", "zIndex": "-998", }}
+                
+            ></Lottie>
       </div>
     );
   }
