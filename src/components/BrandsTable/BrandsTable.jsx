@@ -59,9 +59,9 @@ export default function BrandsTable() {
               <th>ID</th>
               <th>Başlık Adı</th>
               <th>Marka Sahibi</th>
-              <th>
+              {/* <th>
                 Sil
-              </th>
+              </th> */}
             </tr>
           </thead>
           <tbody>{TableRowItem}</tbody>

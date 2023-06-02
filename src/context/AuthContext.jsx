@@ -59,7 +59,7 @@ export const AuthContextProvider = ({children}) => {
 
 
     let updateToken = async (e) => {
-        alertify.success("Update Token")
+        // alertify.success("Update Token")
         let response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
             method:'POST',
             headers:{'Content-Type': 'application/json'},
@@ -69,11 +69,11 @@ export const AuthContextProvider = ({children}) => {
         if (response.status === 200){
             setAuthTokens(data);
             setUser(jwt_decode(data.access))
-            alertify.success("Login Yenilendi.")
+            // alertify.success("Login Yenilendi.")
             localStorage.setItem("authTokens", JSON.stringify(data))
 
         }else {
-            alertify.warning ('Çıkış Yapılıyor.');
+            // alertify.warning ('Çıkış Yapılıyor.');
             logoutUser();
         }
 

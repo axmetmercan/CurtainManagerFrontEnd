@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Footer from "./components/Footer/Footer";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,18 +17,31 @@ import Customers from "./pages/Customers";
 import CustomerDetails from "./pages/CustomerDetails";
 import Measurement from "./pages/Measurement";
 import OrderManagement from "./pages/OrderManagement";
+import Profile from "./pages/Profile"
 import PrivateRoute from "./utils/PrivateRoute";
-import {AuthContextProvider} from "./context/AuthContext";
+import { AuthContextProvider } from "./context/AuthContext";
+
+import Lottie from "lottie-react";
+
+
 function App() {
   const [sidebar, setSidebar] = useState(false);
+  const [isOpen, setOpen] = useState("");
+
+
+
+
+
+
 
   const toggleSidebar = () => {
     setSidebar((prevState) => !prevState);
   };
-  
+
 
   return (
     <div className="App">
+
       <div className="row">
         <div className={sidebar ? "col-2 pe-0 me-0" : "d-none"}>
           <SideBar sidebar={sidebar} />
@@ -39,26 +52,28 @@ function App() {
             <NavigationBar2 openSidebar={toggleSidebar} />
             <div style={{}}>
 
-            <Routes>
+              <Routes>
               // Buna dokunma
-              <Route  path="/" element={<Home/>}/>
-              <Route  path="/about" element={<About/> }/>
-              <Route  path="/register" element={<Register/>}/>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/register" element={<Register />} />
               // Bu public kalıcak.
 
-              <Route  path="/products" element={ <PrivateRoute> <Products/></PrivateRoute>}/>
-              <Route  path="/dealers" element={ <PrivateRoute><Dealers/></PrivateRoute> }/>
-              <Route  path="/brands" element={ <PrivateRoute><Brands/></PrivateRoute> }/>
-              <Route  path="/customers" element={ <PrivateRoute><Customers/></PrivateRoute> }/>
-              <Route  path="/orders" element={<PrivateRoute><OrderManagement /></PrivateRoute> }/>
-              <Route  path="/customers/:id"
-                  element={ <PrivateRoute><CustomerDetails/></PrivateRoute> }/>
-              <Route  path="/measurements/:id" element={<PrivateRoute><Measurement /></PrivateRoute>}/>
-              <Route  path="/*" element={<NotFound></NotFound>}/>
+                <Route path="/products" element={<PrivateRoute> <Products /></PrivateRoute>} />
+                <Route path="/dealers" element={<PrivateRoute><Dealers /></PrivateRoute>} />
+                <Route path="/brands" element={<PrivateRoute><Brands /></PrivateRoute>} />
+                <Route path="/customers" element={<PrivateRoute><Customers /></PrivateRoute>} />
+                <Route path="/orders" element={<PrivateRoute><OrderManagement /></PrivateRoute>} />
+                <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+                <Route path="/orders/:id" element={<PrivateRoute><OrderManagement /></PrivateRoute>} />
+                <Route path="/customers/:id"
+                  element={<PrivateRoute><CustomerDetails /></PrivateRoute>} />
+                <Route path="/measurements/:id" element={<PrivateRoute><Measurement /></PrivateRoute>} />
+                <Route path="/*" element={<NotFound></NotFound>} />
 
 
 
-            </Routes>
+              </Routes>
             </div>
 
 
@@ -67,6 +82,13 @@ function App() {
 
         </div>
       </div>
+
+
+
+
+
+
+
     </div>
   );
 }

@@ -3,12 +3,15 @@ import MeasurementCard from '../components/MeasurementCard/MeasurementCard'
 import WindowsCard from '../components/WindowsComponent/WindowsCard'
 import alertify from 'alertifyjs';
 import AuthContext from "../context/AuthContext"
+import axios from 'axios';
 
 
 const Measurement = () => {
 
   const [mess, setMeasurements] = useState({})
   const [customer, setCustomer] = useState()
+
+
 
   const { authTokens } = useContext(AuthContext)
 
@@ -18,7 +21,6 @@ const Measurement = () => {
 
 
   }, [])
-
 
 
   const getMeasurements = async () => {
@@ -42,19 +44,57 @@ const Measurement = () => {
     }
   }
 
- 
- 
- 
-  console.log(mess.measurements)
 
 
-  // const allMeasurements = measurements.map((item) => {
-  //   return <WindowsCard key={item.id} item={item} />;
-  
-  // })
+
+  // console.log(mess.measurements)
+
+  const placeOrder = async () => {
+    let param = window.location.href;
+    param = parseInt(param.split("/").pop())
+
+    const config = {
+      headers: { Authorization: `Bearer ${String(authTokens.access)}` }
+    };
+    console.log(mess)
+    await mess.measurements?.map( async (item)  => {
+      
+    let  request_options = {
+        body: {
+
+          "status": "active",
+          "measurement": item.id,
+          "measurement_group": param,
+          "customer": mess.customer,
+          "company": mess.company
+
+        }
+      }
+
+    console.log(item.id)
+
+
+      await axios.post(`http://127.0.0.1:8000/orders/customer/details/`,{
+
+      // "status": "Aktif",
+      "measurement": item.id,
+      "measurement_group": param,
+      "customer": mess.customer,
+      "company": mess.company
+
+    }, config)
+        .then((res) => { console.log(res) }).catch((err) => { console.log(err) })
+
+
+    })
+
+
+    alertify.notify("Sipariş Oluşturuldu", "success")
+  }
+
 
   const card = mess.measurements?.map((item) => {
-    return <WindowsCard key={item.id} item={item} />;
+    return <WindowsCard key={item.id} item={item}   canDelete={true}/>;
   });
 
   return (
@@ -71,10 +111,6 @@ const Measurement = () => {
         <hr className='my-4'></hr>
         <div className="d-flex justify-content-around align-items-center flex-wrap">
           {card}
-      
-          {/* <WindowsCard />
-          <WindowsCard /> <WindowsCard /> <WindowsCard /> <WindowsCard /> <WindowsCard /> <WindowsCard /> <WindowsCard /> */}
-
         </div>
 
 
@@ -82,9 +118,9 @@ const Measurement = () => {
       <div className="row align-self-center">
         <div className="btn btn-success border rounded-0 py-3 px-5"
           onClick={() => {
-            alertify.notify("Sipariş Oluşturuldu", "success")
+            placeOrder()
           }}
-        > Sipariş Ver <i class="ri-shopping-cart-2-fill"></i></div>
+        > Sipariş Oluştur <i class="ri-shopping-cart-2-fill"></i></div>
       </div>
 
 

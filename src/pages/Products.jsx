@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import ProductCard from '../components/ProductCard/ProductCard'
 import AuthContext from '../context/AuthContext'
-
+import UrunEkleme from '../components/AddProductComponent/UrunEkleme'
 
 const Products = () => {
 
@@ -69,8 +69,15 @@ const Products = () => {
 
 
     return (
-        <div className='container container-fluid' style={{"zIndex":"1"}}>
-            <div className="d-flex flex-row justify-content-center flex-wrap pt-5 pb-5">
+        <div className='border rounded-3 shadow container container-fluid' style={{"zIndex":"1"}}>
+      
+
+            <UrunEkleme></UrunEkleme>
+            <p className="text-center display-6  m-4">Ürünler</p>
+            <hr></hr>
+            <div className="d-flex flex-row   justify-content-center flex-wrap pt-5 pb-5">
+            
+
                 {productList.map( (product) => (
 
                     <ProductCard key={product.id}

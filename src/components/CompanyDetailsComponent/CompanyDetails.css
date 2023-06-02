@@ -1,0 +1,17 @@
+.sirket-bilgileri-form {
+  background-color: rgb(246, 247, 248);
+  border-radius: 10px;
+}
+
+.form-header {
+  background-color: aqua;
+  border-radius: 5px;
+  text-align: center;
+  height: 50px;
+  font-size: 30px;
+}
+
+.mevcut-calisan-bilgileri-form {
+  background-color: rgb(246, 247, 248);
+  border-radius: 10px;
+}

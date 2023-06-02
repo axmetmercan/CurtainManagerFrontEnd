@@ -50,11 +50,11 @@ export default function TableRow(props) {
       <th scope="row">{props.item.id}</th>
       <td>{props.item.title}</td>
       <td>{props.item.owner}</td>
-      <td>
+      {/* <td>
         <Button color="danger" >
         <Lottie onClick={deleteBrand} style={{ width: "30px" }} className="delete" animationData={animationData} ></Lottie>
         </Button>
-      </td>
+      </td> */}
       <TableRowDetailsModal
         // openModal={modal}
         // closeModal={closeModal}
