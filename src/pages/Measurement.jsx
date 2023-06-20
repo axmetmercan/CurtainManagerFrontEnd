@@ -22,6 +22,8 @@ const Measurement = () => {
 
   }, [])
 
+  console.log(mess.order_status)
+
 
   const getMeasurements = async () => {
     let param = window.location.href;
@@ -37,6 +39,7 @@ const Measurement = () => {
     let data = await response.json()
     if (response.status === 200) {
       setMeasurements(data)
+      console.log(data)
 
     } else if (response.statusText === 'Unauthorized') {
 
@@ -57,9 +60,9 @@ const Measurement = () => {
       headers: { Authorization: `Bearer ${String(authTokens.access)}` }
     };
     console.log(mess)
-    await mess.measurements?.map( async (item)  => {
-      
-    let  request_options = {
+    await mess.measurements?.map(async (item) => {
+
+      let request_options = {
         body: {
 
           "status": "active",
@@ -71,30 +74,39 @@ const Measurement = () => {
         }
       }
 
-    console.log(item.id)
+      console.log(item.id)
 
 
-      await axios.post(`http://127.0.0.1:8000/orders/customer/details/`,{
+      await axios.post(`http://127.0.0.1:8000/orders/customer/details/`, {
 
-      // "status": "Aktif",
-      "measurement": item.id,
-      "measurement_group": param,
-      "customer": mess.customer,
-      "company": mess.company
+        // "status": "Aktif",
+        "measurement": item.id,
+        "measurement_group": param,
+        "customer": mess.customer,
+        "company": mess.company,
+        "status": "active"
 
-    }, config)
-        .then((res) => { console.log(res) }).catch((err) => { console.log(err) })
+      }, config)
+        .then(async(res) => {
+
+          const data = {
+            "order_status": true
+          }
+
+          await axios.patch(`http://127.0.0.1:8000/measurement/groups/${param}/`, data, config)
+          window.location.replace(`http://localhost:5173/orders/${param}`)
+
+        }).catch((err) => { console.log(err) })
 
 
     })
-
 
     alertify.notify("Sipariş Oluşturuldu", "success")
   }
 
 
   const card = mess.measurements?.map((item) => {
-    return <WindowsCard key={item.id} item={item}   canDelete={true}/>;
+    return <WindowsCard key={item.id} item={item} canDelete={true} />;
   });
 
   return (
@@ -115,13 +127,16 @@ const Measurement = () => {
 
 
       </div>
-      <div className="row align-self-center">
-        <div className="btn btn-success border rounded-0 py-3 px-5"
-          onClick={() => {
-            placeOrder()
-          }}
-        > Sipariş Oluştur <i class="ri-shopping-cart-2-fill"></i></div>
-      </div>
+
+      {mess.order_status === true ? null :
+        <div className="row align-self-center">
+          <div className="btn btn-success border rounded-0 py-3 px-5"
+            onClick={() => {
+              placeOrder()
+            }}
+          > Sipariş Oluştur<i class="ri-shopping-cart-2-fill"></i></div>
+        </div>
+      }
 
 
     </div>

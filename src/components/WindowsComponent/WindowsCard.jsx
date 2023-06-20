@@ -1,10 +1,51 @@
 import React, { useState, useEffect, useContext } from 'react'
 import "./WindowsCard.css";
 import AuthContext from '../../context/AuthContext';
-
+import axios from 'axios';
 import alertify from 'alertifyjs';
 
-const WindowsCard = ({ item, canDelete, ...rest }, props) => {
+const WindowsCard = ({ item, canDelete, status, order_id, ...rest }, props) => {
+    const [orderStatus, setOrderStatus] = useState("Sipariş Alındı");
+    React.useEffect(() => {
+
+        setOrderStatus(status)
+    }, []);
+
+    function changeStatus(statue, e) {
+        let stat = ""
+        switch (statue) {
+            case "Aktif":
+                setOrderStatus("Aktif");
+                stat = "active"
+                changeOrderStatus(stat)
+                break;
+            case "Hazırlanıyor":
+                setOrderStatus("Hazırlanıyor");
+                stat = "preparing"
+                changeOrderStatus(stat)
+                break;
+            case "Dikimde":
+                setOrderStatus("Teslimatta");
+                stat = "on_delivery"
+                changeOrderStatus(stat)
+                break;
+            case "Kontrolde":
+                setOrderStatus("Kontrolde");
+                stat = "on_control"
+                changeOrderStatus(stat)
+                break;
+            case "Teslime Hazır":
+                setOrderStatus("Teslim Edildi");
+                stat = "delivered"
+                changeOrderStatus(stat)
+                break;
+            case "Teslim Edildi":
+                setOrderStatus("Tamamlandı");
+                stat = "completed"
+                changeOrderStatus(stat)
+                break;
+        }
+    }
 
     const { authTokens } = useContext(AuthContext)
 
@@ -29,6 +70,24 @@ const WindowsCard = ({ item, canDelete, ...rest }, props) => {
         })
 
     }
+
+
+
+    const changeOrderStatus = async (stat) => {
+        console.log(stat)
+
+        const config = {
+            headers: { Authorization: `Bearer ${String(authTokens.access)}` }
+          };
+
+        const body = {
+            "status": String(stat)
+        }
+      
+        const patch = await axios.patch(`http://127.0.0.1:8000/orders/customer/details/${order_id}/`, body,config)
+
+    }
+
 
     return (
         <div className="d-flex flex-row  p-3">
@@ -140,50 +199,54 @@ const WindowsCard = ({ item, canDelete, ...rest }, props) => {
 
 
             {canDelete ? null :
-            <div className="d-flex flex-column justify-content-between">
-                <div className="btn btn-dark  mt-2">
-                    Anlık Sipariş Durumu:
-                </div>
-                <div className="d-flex flex-column flex-grow-1 buttons">
-                    <div
-                        onClick={() => changeStatus("Onaylandı")}
-                        className={`btn btn-danger
+                <div className="d-flex flex-column justify-content-between">
+                    <div className="btn btn-dark  mt-2">
+                        Anlık Sipariş Durumu: {orderStatus}
+                    </div>
+                    <div className="d-flex flex-column flex-grow-1 buttons">
+                        <div
+                            onClick={() => changeStatus("Aktif")}
+                            className={`btn btn-danger
              mt-1 mb-1 flex-grow-1 `}
-                    >
-                        Onaylandı
-                    </div>
-                    <div
-                        onClick={() => changeStatus("Hazırlanıyor")}
-                        className={`btn btn-danger mt-1 mb-1 flex-grow-1`}
-                    >
-                        Hazırlanıyor
-                    </div>
-                    <div
-                        onClick={() => changeStatus("Dikimde")}
-                        className="btn btn-danger mt-1 mb-1 flex-grow-1"
-                    >
-                        Dikimde
-                    </div>
-                    <div
-                        onClick={() => changeStatus("Kontrolde")}
-                        className="btn btn-danger mt-1 mb-1 flex-grow-1"
-                    >
-                        Kontrolde
-                    </div>
-                    <div
-                        onClick={() => changeStatus("Teslime Hazır")}
-                        className="btn btn-danger mt-1 mb-1 flex-grow-1"
-                    >
-                        Teslime Hazır
-                    </div>
-                    <div
-                        onClick={() => changeStatus("Teslim Edildi")}
-                        className="btn btn-danger mt-1 mb-1 flex-grow-1"
-                    >
-                        Teslim Edildi
+                            value="active"
+                            name="active"
+                        >
+                            Onaylandı
+                        </div>
+                        <div
+                            onClick={() => changeStatus("Hazırlanıyor")}
+                            className={`btn btn-danger mt-1 mb-1 flex-grow-1`}
+                            value="preparing"
+
+                        >
+                            Hazırlanıyor
+                        </div>
+                        <div
+                            onClick={() => changeStatus("Dikimde")}
+                            className="btn btn-danger mt-1 mb-1 flex-grow-1"
+                        >
+                            Teslimatta
+                        </div>
+                        <div
+                            onClick={() => changeStatus("Kontrolde")}
+                            className="btn btn-danger mt-1 mb-1 flex-grow-1"
+                        >
+                            Kontrolde
+                        </div>
+                        <div
+                            onClick={() => changeStatus("Teslime Hazır")}
+                            className="btn btn-danger mt-1 mb-1 flex-grow-1"
+                        >
+                            Teslim Edildi
+                        </div>
+                        <div
+                            onClick={() => changeStatus("Teslim Edildi")}
+                            className="btn btn-danger mt-1 mb-1 flex-grow-1"
+                        >
+                            Tamamlandı
+                        </div>
                     </div>
                 </div>
-            </div>
             }
 
 

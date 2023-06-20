@@ -74,6 +74,9 @@ const OrderManagement = () => {
     <div className="container container-fluid p-3 shadow border rounded-3 ">
       <p className="display-5 text-center p-4">Sipariş Durumu</p>
       <OrderTable customerData={cust} />
+      <div className="col d-flex justify-content-end">
+        <div className="btn btn-success">Toptancı Siparişi Oluştur</div>
+      </div>
       <hr></hr>
 
       <OrderWindowsCard orders={orders} />

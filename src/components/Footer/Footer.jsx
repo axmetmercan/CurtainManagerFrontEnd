@@ -25,7 +25,7 @@ export default function Footer() {
 
                 </div>
                 <hr className="hrline align-self-center"></hr>
-                <p className="pb-3 pt-3 align-self-center">© 2022 Company, Inc</p>
+                <p className="pb-3 pt-3 align-self-center">© 2023 Dropself Company, Inc</p>
             </div>
         </div>
 

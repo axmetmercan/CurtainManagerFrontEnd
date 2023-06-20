@@ -55,6 +55,7 @@ export default function CustomerDetailsTable(props) {
 
     if (response.status === 200) {
       setMeasurements(data.results)
+      console.log(data.results)
 
     } else if (response.statusText === 'Unauthorized') {
 
@@ -73,7 +74,7 @@ export default function CustomerDetailsTable(props) {
   });
 
   return (
-    <div className="m-5">
+    <div className="m-5 ">
       <Table hover className=" mt-3">
         <thead>
           <tr>
@@ -83,6 +84,7 @@ export default function CustomerDetailsTable(props) {
             <th>Kayıt Tarihi</th>
             {/* <th>Ölçü Durumu</th> */}
             <th>Detaylar</th>
+            <th>Sipariş Durumu</th>
           </tr>
         </thead>
         <tbody>{TableRowItem}</tbody>

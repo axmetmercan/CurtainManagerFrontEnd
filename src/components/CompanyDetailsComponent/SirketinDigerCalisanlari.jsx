@@ -1,11 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Table from "react-bootstrap/Table";
 
-const SirketinDigerCalisanlari = () => {
+const SirketinDigerCalisanlari = (props) => {
+
+  const [employees, setEmployees] = useState()
+
+  useEffect(() => {
+    setEmployees(props.companyEmployees)
+  }, [])
+
+
+
+  // console.log(props.companyEmployees.results)
+  const employeeRow = props.companyEmployees.results?.map((item) => {
+    return <tr>
+      <td>{item.id}</td>
+      <td>{item.name}</td>
+      <td>{item.surname}</td>
+      <td>{item.type}</td>
+      <td>{item.company}</td>
+      <td>{item.phone_number}</td>
+      <td>{item.tc_number}</td>
+      <td>{item.email}</td>
+      <td>{item.salary}</td>
+      <td>{item.created_at}</td>
+      {/* <td>{item.updated_at}</td>
+      <td>{item.last_login}</td> */}
+
+
+
+
+
+
+
+
+    </tr>
+
+  })
+
+
   return (
     <div>
-      <div className="form-header">Şirketin Diğer Çalışanları</div>
-      <Table hover>
+      <div className="form-header table-responsive">Şirketin Diğer Çalışanları</div>
+
+      <table hover className='table table-hover'>
         <thead>
           <tr>
             <th>ID</th>
@@ -18,12 +56,23 @@ const SirketinDigerCalisanlari = () => {
             <th>E-mail</th>
             <th>Maaş</th>
             <th>Oluşturuldu</th>
-            <th>Güncellendi</th>
-            <th>Son Giriş</th>
+            {/* <th>Güncellendi</th>
+            <th>Son Giriş</th> */}
           </tr>
         </thead>
+
         <tbody>
           <tr>
+
+            <form method="post" action="">
+              <td><label>Hello</label>
+                <input type="text" name="job_num" />
+              </td>
+
+            </form>
+          </tr>
+
+          {/* <tr>
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
@@ -36,37 +85,12 @@ const SirketinDigerCalisanlari = () => {
             <td>@</td>
             <td>@</td>
             <td>@</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-            <td>@</td>
-          </tr>
+          </tr>  */}
+
+          {employeeRow}
+
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 }

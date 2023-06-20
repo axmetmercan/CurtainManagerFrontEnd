@@ -91,11 +91,11 @@ export const AuthContextProvider = ({children}) => {
 
         const refreshTime = 1000*60*4;
   
-        setTimeout(()=>{
-            if (authTokens){
-                updateToken();
-            }
-        }, refreshTime)
+        // setTimeout(()=>{
+        //     if (authTokens){
+        //         updateToken();
+        //     }
+        // }, refreshTime)
 
         
 

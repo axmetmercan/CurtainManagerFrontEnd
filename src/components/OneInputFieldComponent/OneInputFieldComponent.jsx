@@ -32,7 +32,7 @@ const OneInputFieldComponent = (props) => {
     let response = await fetch("http://127.0.0.1:8000/measurement/groups/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ "customer": parseInt(form[1]),"name":e.target.formvalue.value}),
+      body: JSON.stringify({ "customer": parseInt(form[1]),"name":e.target.formvalue.value,order_status:false}, ),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + String(authTokens.access)

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default function TableRow(props) {
   const [modal, setModal] = useState(false);
   const [measuremets ,setMeasurements] = useState([])
+  const [isOrdered, setOrdered] = useState(false)
 
   const toggleModal = () => {
     setModal(true);
@@ -32,6 +33,15 @@ export default function TableRow(props) {
         >
           Detaylar
         </Link>
+      </td>
+      <td>
+        {props.item.order_status === true ?  <Link
+          className="btn btn-success"
+          to={`/orders/${props.item.id}`}
+        >
+          Sipariş
+        </Link> : <Button className="btn btn-danger">Taslak   </Button> }
+       
       </td>
     </tr>
   );

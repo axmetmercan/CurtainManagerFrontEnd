@@ -1,0 +1,12 @@
+.table-title {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .table-title-text {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+  }

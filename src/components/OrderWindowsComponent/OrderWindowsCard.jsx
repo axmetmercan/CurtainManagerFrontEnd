@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./OrderWindowsCard.css";
 import WindowsCard from "../WindowsComponent/WindowsCard";
+import axios from "axios";
+import AuthContext from "../../context/AuthContext";
+
 
 import alertify from "alertifyjs";
 
-const OrderWindowsCard = ({orders, ...rest}, props) => {
+const OrderWindowsCard = ({ orders, ...rest }, props) => {
   const [orderStatus, setOrderStatus] = useState("Sipariş Alındı");
 
-  React.useEffect(() => {}, [orderStatus]);
+  const {authTokens} = useContext(AuthContext)
 
+  React.useEffect(() => { }, [orderStatus]);
   function changeStatus(statue) {
     switch (statue) {
       case "Onaylandı":
@@ -30,9 +34,12 @@ const OrderWindowsCard = ({orders, ...rest}, props) => {
         setOrderStatus("Teslim Edildi");
         break;
     }
+
   }
-  const mesCard = orders.results?.map((item)=>{
-    return <WindowsCard key={item.measurement.id} item={item.measurement} canDelete={true}></WindowsCard>
+
+
+  const mesCard = orders.results?.map((item) => {
+    return <WindowsCard key={item.measurement.id} item={item.measurement} order_id={item.id} status={item.long_status} canDelete={false}></WindowsCard>
   })
 
 
@@ -86,7 +93,7 @@ const OrderWindowsCard = ({orders, ...rest}, props) => {
         </div>
       </div> */}
       {mesCard}
-     
+
     </div>
   );
 };

@@ -219,7 +219,7 @@ const MeasurementCard = () => {
         formData.append("type", a(pile))
         uploadImgHandler(formData, config)
 
-        window.location.reload(true);
+        // window.location.reload(true);
 
 
     }

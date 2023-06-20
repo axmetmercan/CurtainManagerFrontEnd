@@ -22,6 +22,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import { AuthContextProvider } from "./context/AuthContext";
 
 import Lottie from "lottie-react";
+import CompanyDealerOrders from "./pages/CompanyDealerOrder";
 
 
 function App() {
@@ -66,6 +67,8 @@ function App() {
                 <Route path="/orders" element={<PrivateRoute><OrderManagement /></PrivateRoute>} />
                 <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
                 <Route path="/orders/:id" element={<PrivateRoute><OrderManagement /></PrivateRoute>} />
+                <Route path="/orders/dealers" element={<PrivateRoute><CompanyDealerOrders /></PrivateRoute>} />
+
                 <Route path="/customers/:id"
                   element={<PrivateRoute><CustomerDetails /></PrivateRoute>} />
                 <Route path="/measurements/:id" element={<PrivateRoute><Measurement /></PrivateRoute>} />

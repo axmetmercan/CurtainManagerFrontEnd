@@ -48,9 +48,9 @@ export default class NavigationBar2 extends React.Component {
           >
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to="/dashboard" className="nav-link text-dark ps-5">
+                {/* <Link to="/dashboard" className="nav-link text-dark ps-5">
                   Dashboard
-                </Link>
+                </Link> */}
               </NavItem>
            
             </Nav>
