@@ -5,7 +5,7 @@ const CompanyDealerOrder = () => {
     return (
         <div className='container container-fluid p-5 my-5 border rounded-2'>
             <p className='display-6 text-center'>Bayi Siparişleri</p>
-            <DealerSelectorComponent></DealerSelectorComponent>
+            <DealerSelectorComponent/>
             <CompanyDealerOrders/>
         </div>
     )

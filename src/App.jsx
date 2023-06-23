@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import Footer from "./components/Footer/Footer";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap"
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -19,6 +20,7 @@ import Measurement from "./pages/Measurement";
 import OrderManagement from "./pages/OrderManagement";
 import Profile from "./pages/Profile"
 import PrivateRoute from "./utils/PrivateRoute";
+import OrderTrack from "./pages/OrderTrack"
 import { AuthContextProvider } from "./context/AuthContext";
 
 import Lottie from "lottie-react";
@@ -58,6 +60,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/track/order" element={<OrderTrack />}/>
+
+                {/* <Route path="/orders/:id" element={<OrderManagement />} /> */}
+
               // Bu public kalıcak.
 
                 <Route path="/products" element={<PrivateRoute> <Products /></PrivateRoute>} />
@@ -68,6 +74,7 @@ function App() {
                 <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
                 <Route path="/orders/:id" element={<PrivateRoute><OrderManagement /></PrivateRoute>} />
                 <Route path="/orders/dealers" element={<PrivateRoute><CompanyDealerOrders /></PrivateRoute>} />
+
 
                 <Route path="/customers/:id"
                   element={<PrivateRoute><CustomerDetails /></PrivateRoute>} />

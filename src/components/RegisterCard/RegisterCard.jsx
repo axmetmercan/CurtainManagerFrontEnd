@@ -29,9 +29,8 @@ const RegisterCard = () => {
 
     const formSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log("FormSubmit Edildi")
 
-
+        
         await uploadImgHandler(e);
 
         console.log(uploadedImgId)
@@ -39,7 +38,7 @@ const RegisterCard = () => {
 
     }
 
-    const uploadFactoryHandler = async (imgId, config, e) => {
+    const uploadFactoryHandler = async (imgId, e) => {
 
         const name = e.target.company_name.value;
         const tax_no = e.target.tax_number.value;
@@ -68,10 +67,10 @@ const RegisterCard = () => {
         }
 
 
-        await axios.post("http://127.0.0.1:8000/company/create/", body, config)
+        await axios.post("http://127.0.0.1:8000/company/create/", body)
            
-        await alertify.success("Kaydınız Oluşturuldu")
-        // window.location.reload()
+        alertify.success("Kaydınız Oluşturuldu")
+        window.location.href("http://localhost:5173/")
 
 
 
@@ -81,19 +80,20 @@ const RegisterCard = () => {
 
 
     const uploadImgHandler = (e) => {
-        const config = {
-            headers: { Authorization: `Bearer ${String(authTokens.access)}` }
-        };
+        // const config = {
+        //     headers: { Authorization: `Bearer ${String(authTokens.access)}` }
+        // };
 
         const formData = new FormData();
 
         formData.append("title", "Şirket Resmi")
         formData.append("pic_url", file)
 
-        axios.post('http://127.0.0.1:8000/picture/img/', formData, config)
+        axios.post('http://127.0.0.1:8000/picture/img/', formData)
             .then((res) => {
                 setUploadedImgId(res.data.id)
-                uploadFactoryHandler(res.data.id, config, e)
+                uploadFactoryHandler(res.data.id, e)
+
 
             })
             .catch((err) => { console.log(err) })
@@ -147,10 +147,10 @@ const RegisterCard = () => {
 
                                 <div className="col-md-6">
                                     <Label for='responsible_people'>Yetkili İsmi</Label>
-                                    <Input id='responsible_people' name='owner_name' placeholder='Ahmet'></Input>
+                                    <Input id='responsible_people' name='owner_name' placeholder='İsim'></Input>
 
                                     <Label for='repsonsible_people_surname'>Yetkili Soyismi</Label>
-                                    <Input id='repsonsible_people_surname' name='owner_surname' placeholder='Mercan'></Input>
+                                    <Input id='repsonsible_people_surname' name='owner_surname' placeholder='Soyisim'></Input>
 
                                     <Label for='phone_number'>Yetkili Telefon Numarıs</Label>
                                     <Input id='phone_number' name='phone' placeholder='05555555555'></Input>
@@ -170,7 +170,7 @@ const RegisterCard = () => {
                                         }}
                                     ></Input>
 
-                                    <Label for='register_type'>Kayıt Tipi</Label>
+                                    {/* <Label for='register_type'>Kayıt Tipi</Label>
                                     <Input
                                         id="register_type"
                                         name="select"
@@ -184,13 +184,13 @@ const RegisterCard = () => {
                                         </option>
                                         <option>
                                             Perakende Satıcı
-                                        </option></Input>
+                                        </option></Input> */}
                                 </div>
 
                             </FormGroup>
                             <div className="row justify-content-center">
                                 <Button className='bg-success' style={{ width: "fit-content" }} >
-                                    Ön Kayıt Başvurusu Yap
+                                    Kayıt Ol
                                 </Button>
                             </div>
 

@@ -56,7 +56,7 @@ export default class NavigationBar2 extends React.Component {
             </Nav>
 
             <Nav className="ml-auto" navbar>
-              <NavItem>
+              {/* <NavItem>
                 <Link to="/" className="nav-link text-dark">
                   <p><i className="ri-message-2-fill"></i></p>
                 </Link>
@@ -65,9 +65,9 @@ export default class NavigationBar2 extends React.Component {
                 <Link to="/" className="nav-link text-dark">
                   <p><i className="ri-notification-2-fill"></i></p>
                 </Link>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
-                <Link to="/" className="nav-link text-dark">
+                <Link to="/profile" className="nav-link text-dark">
                 <p><i className="ri-user-2-fill"></i></p>
 
                 </Link>

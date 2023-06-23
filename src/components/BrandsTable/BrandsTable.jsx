@@ -18,6 +18,8 @@ export default function BrandsTable() {
     getProducts();
 
   }, []);
+  
+  console.log(brands)
 
 
 

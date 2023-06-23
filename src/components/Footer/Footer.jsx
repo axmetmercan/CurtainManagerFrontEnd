@@ -22,10 +22,12 @@ export default function Footer() {
                     <Link to="/" className="ms-3 me-3 text-muted  nav-link">Anasayfa</Link>
                     <Link to="/about" className="ms-3 me-3 text-muted  nav-link">Hakkımızda</Link>
                     <Link to="/iletisim" className="ms-3 me-3 text-muted nav-link">İletişim</Link>
+                    <Link to="/orders/1" className="ms-3 me-3 text-muted nav-link">Order</Link>
+
 
                 </div>
                 <hr className="hrline align-self-center"></hr>
-                <p className="pb-3 pt-3 align-self-center">© 2023 Dropself Company, Inc</p>
+                <p className="pb-3 pt-3 align-self-center">© 2023 Curtain Manager Company, Inc</p>
             </div>
         </div>
 

@@ -26,6 +26,8 @@ export default function LoginCard(props) {
         <Link to="/asd">Şifremi Unuttum</Link>
         <span> | </span>
         <Link to="/register"> Kayıt Ol</Link>
+        <Link to="/track/order" className=" btn btn-info p-2 mt-5  ms-3 me-3 text-white nav-link">Sipariş Takibi İçin Tıklayın...</Link>
+
 
 
         </div>

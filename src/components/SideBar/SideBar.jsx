@@ -34,6 +34,12 @@ export default function SideBar(props) {
           <li>
             <i className="ri-user-line"></i>Müşteriler</li>
         </Link>
+
+        <Link className="sidebar--links" to={"/orders/dealers"}>
+          <li>
+            <i className="ri-team-line"></i>Bayi Sipariş Yönetimi</li>
+        </Link>
+        
         <Link className="sidebar--links" to={"/profile"}>
           <li>
             <i className="ri-user-line"></i>Profil</li>

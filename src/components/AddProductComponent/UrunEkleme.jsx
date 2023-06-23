@@ -127,7 +127,7 @@ function UrunEkleme() {
 
       "brand":e.target.brand.value,
       "code":e.target.code.value,
-      "variant":e.target.code.value,
+      "variant":e.target.variant.value,
       "weight":parseInt(e.target.weight.value),
       "height":parseInt(e.target.height.value),
       "w_price":parseFloat(e.target.w_price.value),

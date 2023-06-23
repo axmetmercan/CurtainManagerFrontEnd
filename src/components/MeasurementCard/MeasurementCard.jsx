@@ -100,6 +100,7 @@ const MeasurementCard = () => {
         })
         let data = await response.json()
         if (response.status === 200) {
+            console.log(data.results)
             setVariants(data.results)
 
         } else if (response.statusText === 'Unauthorized') {
@@ -172,7 +173,7 @@ const MeasurementCard = () => {
     }
 
 
-    const formSubmitHandler = (e) => {
+    const formSubmitHandler = async (e) => {
         e.preventDefault();
         let param = window.location.href;
         param = parseInt(param.split("/").pop())
@@ -217,9 +218,9 @@ const MeasurementCard = () => {
         formData.append("width", width)
         formData.append("height", height)
         formData.append("type", a(pile))
-        uploadImgHandler(formData, config)
+        await uploadImgHandler(formData, config)
 
-        // window.location.reload(true);
+        window.location.reload(true);
 
 
     }
@@ -402,7 +403,7 @@ const MeasurementCard = () => {
 
                                     <option value="" >...</option>
                                     {variants.map((item) => (
-                                        <option key={item.id} value={item.variant}>{item.variant}</option>
+                                        <option key={item.id} value={item.id}>{item.variant}</option>
                                     ))}
                                 </Input>
                             </FormGroup>
