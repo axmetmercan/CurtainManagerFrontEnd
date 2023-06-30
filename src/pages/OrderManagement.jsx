@@ -94,6 +94,7 @@ const OrderManagement = () => {
 
       console.log(data)
       postOrder(data);
+      
 
     });
 
@@ -128,6 +129,7 @@ const OrderManagement = () => {
 
     const respopnse = await axios.post(url, data, config)
     console.log(respopnse.data)
+    alertify.success("Sipariş Oluşturuldu")
   }
 
 

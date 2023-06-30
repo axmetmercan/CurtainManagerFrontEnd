@@ -39,16 +39,30 @@ export default function SideBar(props) {
           <li>
             <i className="ri-team-line"></i>Bayi Sipariş Yönetimi</li>
         </Link>
-        
+
         <Link className="sidebar--links" to={"/profile"}>
           <li>
             <i className="ri-user-line"></i>Profil</li>
         </Link>
+        <Link className="sidebar--links" to={"/track/order"}>
+          <li>
+            <i className="ri-navigation-line"></i>Sipariş Takibi
+          </li>
+        </Link>
+        {localStorage.getItem("authTokens") !== null ? <li onClick={() => {
+          localStorage.removeItem("authTokens");
+          console.log("silindi")
+          window.location.replace("/")
+
+        }}>
+          <i className="ri-logout-box-line" ></i>Çıkış Yap
+        </li> : null}
         <Link className="sidebar--links" to={"/about"}>
           <li>
             <i className="ri-information-line"></i>Hakkımızda
           </li>
         </Link>
+
       </div>
     </div>
   );

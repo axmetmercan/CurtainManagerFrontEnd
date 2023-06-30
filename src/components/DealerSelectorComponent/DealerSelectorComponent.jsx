@@ -57,7 +57,7 @@ const DealerSelectorComponent = () => {
         
 
         companyOrderList.results?.forEach(element => {
-            totalOrder = totalOrder + (element.unit * element.unit_price)
+            totalOrder = totalOrder + (element.unit * element.unit_price /100)
             totalPayment = totalPayment + (element.payment)
         });
         let total =  () => {return totalOrder- totalPayment}

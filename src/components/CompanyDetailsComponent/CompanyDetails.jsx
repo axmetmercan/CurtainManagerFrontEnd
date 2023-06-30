@@ -7,6 +7,7 @@ import MevcutCalisanBilgileri from "./MevcutCalisanBilgileri";
 import SirketinDigerCalisanlari from "./SirketinDigerCalisanlari";
 import axios from 'axios';
 import AuthContext from "../../context/AuthContext"
+import YeniKullanıcı from "./YeniKullanıcı";
 
 const CompanyDetails = () => {
 
@@ -17,7 +18,8 @@ const CompanyDetails = () => {
 
 
 
-  const { authTokens,user } = useContext(AuthContext)
+
+  const { authTokens, user } = useContext(AuthContext)
 
 
   useEffect(() => {
@@ -47,28 +49,28 @@ const CompanyDetails = () => {
 
 
   //mevcut çalışan bilgilerini çek
-  const currentCompanyEmployee =()=>{
+  const currentCompanyEmployee = () => {
     axios.get(`http://127.0.0.1:8000/employee/employee/${user.user_id}`, config)
-    .then((res) => {
-      setCurrentUser(res.data)
-    }).catch((err) => { console.log(err) })
+      .then((res) => {
+        setCurrentUser(res.data)
+      }).catch((err) => { console.log(err) })
   }
 
   // diğer çalışan bilgilerini çek
 
 
-  const currentCompanyEmployees =()=>{
+  const currentCompanyEmployees = () => {
     axios.get('http://127.0.0.1:8000/employee/employee/', config)
-    .then((res) => {
-      setCompanyEmployees(res.data)
-    }).catch((err) => { console.log(err) })
+      .then((res) => {
+        setCompanyEmployees(res.data)
+      }).catch((err) => { console.log(err) })
   }
 
-  const employeeTypesHandler =()=>{
+  const employeeTypesHandler = () => {
     axios.get('http://127.0.0.1:8000/employee/types/', config)
-    .then((res) => {
-      setEmpoyeeTypes(res.data.results)
-    }).catch((err) => { console.log(err) })
+      .then((res) => {
+        setEmpoyeeTypes(res.data.results)
+      }).catch((err) => { console.log(err) })
   }
 
   return (
@@ -77,14 +79,21 @@ const CompanyDetails = () => {
       <hr></hr>
       <Row className="d-flex align-items-center mb-3">
         <Col>
-          <SirketBilgileri company = {companyDetail} currentUser = {currentUser} />
+          <SirketBilgileri company={companyDetail} currentUser={currentUser} />
         </Col>
         <Col>
-          <MevcutCalisanBilgileri currentUser = {currentUser} employeeTypes = {employeeTypes}/>
+          <MevcutCalisanBilgileri currentUser={currentUser} employeeTypes={employeeTypes} />
         </Col>
       </Row>
       <Row>
-        <SirketinDigerCalisanlari companyEmployees = {companyEmployees} employeeTypes = {employeeTypes} />
+  
+        <YeniKullanıcı />
+
+
+      </Row>
+
+      <Row>
+        <SirketinDigerCalisanlari companyEmployees={companyEmployees} employeeTypes={employeeTypes} />
       </Row>
     </div>
   );

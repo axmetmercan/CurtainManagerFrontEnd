@@ -25,7 +25,7 @@ const MeasurementCard = () => {
     const [loading, setLoading] = useState(true);
     const [file, setFile] = useState("")
     const [img, setImg] = useState([])
-
+    const [prodPrice, setProdPrice] = useState(0);
 
 
 
@@ -399,6 +399,7 @@ const MeasurementCard = () => {
                                     name='product_variant'
                                     disabled={!secondDropdown}
                                     required
+                
                                 >
 
                                     <option value="" >...</option>
@@ -437,7 +438,7 @@ const MeasurementCard = () => {
 
                         </Form>
 
-                        <p className='p-2 border rounded-3 bg-info shadow h4 measurement-price'>Fiyat: <span className='fw-bold'>99₺</span></p>
+                        {/* <p className='p-2 border rounded-3 bg-info shadow h4 measurement-price'>Fiyat: <span className='fw-bold'>99₺</span></p> */}
 
 
                     </CardBody>

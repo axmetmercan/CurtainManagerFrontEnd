@@ -64,7 +64,8 @@ const WindowsCard = ({ item, canDelete, status, order_id, ...rest }, props) => {
             console.log(response)
             if (response.status === 204) {
                 alertify.warning('Ürün Silindi')
-                window.location.reload(true)
+                window.location.reload(true)        // calculateTotal();
+
 
             }
         })

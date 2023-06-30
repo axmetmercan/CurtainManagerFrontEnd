@@ -83,6 +83,7 @@ const MevcutCalisanBilgileri = (props) => {
       <div className="form-header">Mevcut Çalışan Bilgileri</div>
       <Form onSubmit={formSubmitHandler} className="mevcut-calisan-bilgileri-form p-4">
         <Row>
+          <p className='fw-bolder'>UserID # {props.currentUser.id}</p>
           <Form.Group as={Col} controlId="validationCustom01">
             <Form.Label>Ad:</Form.Label>
             <Form.Control
